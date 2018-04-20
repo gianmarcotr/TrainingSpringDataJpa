@@ -1,0 +1,9 @@
+.notice {
+    width: 380px;
+    right: 20px;
+    display: inline-block;
+    position: fixed;
+    margin: 0px auto;
+    z-index: 1031;
+
+}

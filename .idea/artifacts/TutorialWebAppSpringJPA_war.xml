@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TutorialWebAppSpringJPA:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="TutorialWebAppSpringJPA.war">
+      <element id="artifact" artifact-name="TutorialWebAppSpringJPA:war exploded" />
+    </root>
+  </artifact>
+</component>
