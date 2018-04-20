@@ -6,7 +6,5 @@
         </script>
     </c:forEach>
 </c:if>
-
 </header>
-
 </html>

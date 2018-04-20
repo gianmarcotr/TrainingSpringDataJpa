@@ -1,7 +1,4 @@
-
-
 <%@ include file="_header.jsp"%>
-
 <div class="container">
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
@@ -45,22 +42,16 @@
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose>
-
-
                             <hr>
                             <h6>User options </h6>
                             <a href="<c:url value="/edit-user-${user.id}"/>"><button type="button" class="btn btn-outline-warning">Edit</button></a>
                             <a id="a${u.id}" href=""><button type="button"  onclick="deleteConfirm(${user.id})" class="btn btn-outline-danger">Delete</button></a>
                             <a href="<c:url value="/new"/>"><button type="button" class="btn btn-outline-success">New</button></a>
                             <a href="<c:url value="/"/>"><button type="button" class="btn btn-outline-info">List Users</button></a>
-
-
                         </div>
-
                     </div>
                     <!--/row-->
                 </div>
-
                 <div class="tab-pane" id="edit">
 
                 </div>
@@ -84,9 +75,6 @@
         </div>
     </div>
 </div>
-
-
 </body>
-
 <%@ include file="_footer.jsp"%>
 

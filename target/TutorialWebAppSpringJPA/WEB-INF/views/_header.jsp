@@ -21,14 +21,10 @@
     <script src="<c:url value='/static/js/skill.js'/>"></script>
     <script src="<c:url value='/static/js/confirm.js'/>"></script>
 
-  <title>Tutorial</title>
-
-
+    <title>Tutorial</title>
 </head>
 
-
 <body>
-${error}
 <header id="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">TutorialWebApp</a>
@@ -64,9 +60,6 @@ ${error}
         </div>
     </nav>
     <div class="notice alert-dismissible" id="idDivNotice">
-
     </div>
-
     <br>
-
 </header>

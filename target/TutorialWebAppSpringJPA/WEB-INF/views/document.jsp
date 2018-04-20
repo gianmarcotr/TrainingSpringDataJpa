@@ -4,7 +4,6 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-4"></div>
-
         <div class="col-sm-4">
             <div class="card bg-light p-3">
                 <h4> <a href="<c:url value="/user-${user.id}"/>">${user.firstname} ${user.lastname} </a>File</h4>
@@ -24,10 +23,8 @@
                             <li class="list-group-item"> No files</li>
                         </c:otherwise>
                     </c:choose>
-
                 </ul>
             </div>
-
             <hr>
             <h5> Upload New File</h5>
             <form:form method="POST" modelAttribute="fileBucket" enctype="multipart/form-data" role="form" class="form-group ">

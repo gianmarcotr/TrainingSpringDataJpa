@@ -59,14 +59,13 @@ public class FileController {
     //MANAGE FILE GET
     @RequestMapping(value = {"/uploadFile-{idU}"}, method = RequestMethod.GET)
     public String uploadFile(@PathVariable int idU, ModelMap model){
+
         User user = userService.findById(idU);
         FileBucket fileBucket = new FileBucket();
         if(user.getUserDocuments() != null)
             model.addAttribute("docs", true);
         model.addAttribute("fileBucket", fileBucket);
         model.addAttribute("user", user);
-
-
 
         List<Notification> notifications = new ArrayList<>();
         Notification not = new Notification("Manage User File");
@@ -88,7 +87,6 @@ public class FileController {
             model.addAttribute("invalidFB", "is-invalid");
         }
 
-
         if(bindingResult.hasErrors()){
             List<FieldError> fieldError = bindingResult.getFieldErrors();
             for (FieldError fe: fieldError){
@@ -106,11 +104,8 @@ public class FileController {
             return "document";
         }
 
-
-
         if(user.getUserDocuments() != null)
             documentService.deleteById(user.getUserDocuments().getIdUD());
-
 
         saveDocument(fileBucket, user);
 

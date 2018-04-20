@@ -5,12 +5,11 @@
 
 <div class="container text-center">
     <div clasS="row">
-
         <div class="col-sm-12"><h3>USERS </h3></div>
     </div>
     ${success}
     <table class="table table-hover">
-      <tr>
+        <tr>
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Country</th>
@@ -22,17 +21,14 @@
         </tr>
         <c:forEach var="u" items="${users}">
             <c:set var = "userDate" value = "${u.birthDate}" />
-
-
-
             <tr>
-                        <td><a href="<c:url value="/user-${u.id}"/>">${u.firstname}</a></td>
+                <td><a href="<c:url value="/user-${u.id}"/>">${u.firstname}</a></td>
                 <td>${u.lastname}</td>
                 <td>${u.country}</td>
                 <td><fmt:formatDate type = "date" value = "${userDate}" /></td>
                 <td>${u.maritalStatus.nome}</td>
                 <td class="dropdown">
-                     <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         View skills
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -45,7 +41,6 @@
                     <div class="btn-group">
                         <button type="button" onclick="printNotice('${u.userDocuments.name}', 'info', 500);" class="btn btn-outline-secondary btn-sm">
                             ${u.userDocuments.name}
-
                         </button>
                         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
@@ -70,16 +65,14 @@
     </c:if>
     <hr>
 
-
-
-
     <a href="new"><button type="button" class="btn btn-success">Add User</button></a>
     <c:if test="${reset}">
         <a href="/"><button type="button" class="btn btn-warning">Reset</button> </a>
     </c:if>
 
-
     <hr>
+
+    <!-- TEST NOTIFICHE LATO CLIENT -->
     <button type="button" class="alert alert-success" onclick="printNotice('success', 'success', '3000');"> test </button>
     <button type="button" class="alert alert-warning" onclick="printNotice('warning', 'warning', '3000');"> test </button>
     <button type="button" class="alert alert-info" onclick="printNotice('info', 'info', '3000');"> test </button>

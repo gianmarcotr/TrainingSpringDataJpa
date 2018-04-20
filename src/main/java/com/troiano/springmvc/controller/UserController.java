@@ -55,9 +55,7 @@ public class UserController {
     @Autowired
     MessageSource messageSource;
 
-    /**
-     * This method will list all existing users.
-     */
+    //LIST USER
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
        List<User> users = userService.findAllUsers();
@@ -67,19 +65,24 @@ public class UserController {
 
     //DELETE USER
     @RequestMapping(value = {"/delete-{id}"}, method = RequestMethod.GET)
-        public String deleteUer(@PathVariable int id, RedirectAttributes redirectAttributes){
+    public String deleteUer(@PathVariable int id, RedirectAttributes redirectAttributes){
+
         userService.deleteUser(id);
+
         List<Notification> notifications = new ArrayList<>();
         Notification not = new Notification("User deleted with success", TypeNotice.success.getTypeNotice());
+
         notifications.add(not);
         redirectAttributes.addFlashAttribute("notification", notifications);
         redirectAttributes.addFlashAttribute("notice", true);
+
         return "redirect:/list";
     }
 
     //USER PROFILE GET
     @RequestMapping(value = {"/user-{id}"}, method = RequestMethod.GET)
     public String user(@PathVariable int id, ModelMap model){
+
         User user = userService.findById(id);
 
         if(user.getUserDocuments() != null)
@@ -110,21 +113,17 @@ public class UserController {
             user.setMaritalStatus(null);
 
         if(bindingResult.hasErrors()){
-            //Setto notifiche di errore
+
             List<Notification> notifications = new ArrayList<>();
 
-            //prima notifica
             Notification not1 = new Notification("Error: please control the form", TypeNotice.danger.getTypeNotice());
-            //seconda notifica
             Notification not2 = new Notification("First name, last name and birth date are required", TypeNotice.warning.getTypeNotice(), 10000);
-
             Notification not3 = new Notification("In the next page you can uplooad a file");
             not3.setTimer(6000);
 
             notifications.add(not1);
             notifications.add(not3);
             notifications.add(not2);
-
 
             modelMap.addAttribute("notice", true);
             modelMap.addAttribute("notification", notifications);
@@ -141,7 +140,6 @@ public class UserController {
         userService.saveUser(user);
         List<Notification> notifications = new ArrayList<>();
 
-
         Notification not = new Notification("User added with success", TypeNotice.success.getTypeNotice(), 5000);
         Notification not2 = new Notification("Click on 'Manage File' to upload a document");
         not2.setTimer(7000);
@@ -149,12 +147,10 @@ public class UserController {
         notifications.add(not);
         notifications.add(not2);
 
-
         redirectAttributes.addFlashAttribute("notification", notifications);
         redirectAttributes.addFlashAttribute("notice", true);
 
         return "redirect:/user-"+user.getId();
-
     }
 
     //EDIT USER GET
@@ -174,9 +170,9 @@ public class UserController {
             user.setMaritalStatus(null);
 
         if (result.hasErrors()){
-            //Setto notifica di errore
+
             List<Notification> notifications = new ArrayList<>();
-            //prima notifica
+
             Notification not1 = new Notification("Error: please control the form", TypeNotice.danger.getTypeNotice(), 10000);
             notifications.add(not1);
 
@@ -185,13 +181,10 @@ public class UserController {
 
             //Controllo quale campo ha determintato l'errore
             List<FieldError> fieldError = result.getFieldErrors();
-
             checkField(fieldError, model);
 
             return "signup";
         }
-
-
 
         user.setId(idU);
 
@@ -205,7 +198,6 @@ public class UserController {
 
         redirectAttributes.addFlashAttribute("notification", notifications);
         redirectAttributes.addFlashAttribute("notice", true);
-
 
         return "redirect:/user-"+user.getId();
     }
@@ -226,8 +218,6 @@ public class UserController {
 
         model.addAttribute("reset", true);
         model.addAttribute("users", users);
-
-
 
         return "index";
     }

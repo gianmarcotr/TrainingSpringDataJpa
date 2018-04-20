@@ -1,11 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="_header.jsp"%>
 
-
 <div class="container text-center">
     <div class="row" id="asd">
         <div class="col-sm-4"></div>
-
         <div class="col-sm-4">
             <h3> Inserisci dati utente</h3><hr>
             <form:form method="POST" modelAttribute="user" role="form" class="form-group " data-toggle="validator"  id="addU" novalidate="">
@@ -34,7 +32,7 @@
                     <label for="birthDate" class="control-label">Birth Date: </label>
                     <form:input type="date" path="birthDate" class="form-control ${invalidBD}" id="birthDate"/>
                     <div class="invalid-feedback">
-                            <form:errors path="birthDate"/>
+                        <form:errors path="birthDate"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,7 +45,6 @@
                         <form:errors path="maritalStatus" class="help-inline"/>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="" class="control-lablel">Skills: </label>
                     <select class="form-control" onchange="addSkill()" id="skl" form="addU">
@@ -61,7 +58,6 @@
                             </c:forEach>
                         </c:forEach>
                     </select>
-
                     <div class="card bg-light p-3" id="pos">
                         <c:forEach var="su" items="${user.skills}">
                             <input type="hidden" name="skills" value="${su.idS}" id="${su.idS}hid">
@@ -69,9 +65,6 @@
                         </c:forEach>
                     </div>
                 </div>
-
-
-
                 <c:choose>
                     <c:when test="${edit}">
                         <input type="submit" value="Update" class="btn btn-primary btn-sm"/> or
@@ -86,13 +79,8 @@
                 <p class="text-primary">* campi obbligatori</p>
             </form:form>
         </div>
-
     </div>
 </div>
 <div class="span4"></div>
-
-
-
 </body>
-
 <%@ include file="_footer.jsp"%>
